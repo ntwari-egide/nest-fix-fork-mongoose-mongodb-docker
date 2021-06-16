@@ -35,6 +35,8 @@ export const UserSchema = new mongoose.Schema({
 
 
 export interface User extends mongoose.Document{
+
+    id: String
     
     fullName: String
 
