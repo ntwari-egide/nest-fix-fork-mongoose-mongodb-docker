@@ -23,7 +23,7 @@ export const UserSchema = new mongoose.Schema({
         required: false
     },
     password: {
-        type: Date,
+        type: String,
         required: false
     },
     updatedPasswordAt: {
@@ -32,3 +32,22 @@ export const UserSchema = new mongoose.Schema({
     }
 
 })
+
+
+export interface User extends mongoose.Document{
+    
+    fullName: String
+
+    secondName: String
+
+    username: String
+
+    dateOfBirth: String
+
+    signedUpAt: Date
+
+    password: String
+
+    updatedPasswordAt: Date
+
+}
