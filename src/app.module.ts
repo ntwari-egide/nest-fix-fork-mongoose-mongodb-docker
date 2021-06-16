@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersController } from './users/users.controller';
-import { UsersService } from './users/users.service';
-import { UsersModule } from './users/users.module';
+import { UsersController } from './controllers/users.controller';
+import { UsersService } from './services/users.service';
+import { UsersModule } from './modules/users.module';
 
 @Module({
   imports: [UsersModule],
