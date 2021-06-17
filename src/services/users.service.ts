@@ -10,12 +10,12 @@ export class UsersService {
 
     constructor(@Inject('USER') private readonly userModel: Model<UserModel>){}
 
-    async signupUser(userToCreate: CreateUserDTO){
+    async signupUser(userToCreate : CreateUserDTO): Promise<UserModel>{
 
-        // const newUser = new this.userModel({
-                
-        // })
 
+        const newUser = new this.userModel(userToCreate)
+
+        return newUser.save()
 
     }
 
