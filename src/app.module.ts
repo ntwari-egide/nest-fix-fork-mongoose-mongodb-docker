@@ -1,18 +1,18 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersController } from './controllers/users.controller';
-import { UsersService } from './services/users.service';
-import { UsersModule } from './modules/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UserSchema } from './models/user.model';
+import { UsersModule } from './modules/users.module';
 
 @Module({
   imports: [
-    UsersModule
-    
+    UsersModule,
+    MongooseModule.forRoot(
+      //Replace this line with the one Cluster > Connect > Connect your Application
+      `mongodb+srv://root:<password>@cluster0.ulkpq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+    ),
   ],
-  controllers: [AppController, UsersController],
-  providers: [AppService, UsersService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
