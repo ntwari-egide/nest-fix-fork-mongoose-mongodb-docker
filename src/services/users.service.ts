@@ -19,4 +19,20 @@ export class UsersService {
 
     }
 
+    async findAll(): Promise<UserModel[]>{
+        return this.userModel.find().exec()
+    }
+
+    async findByUserId(id: String) : Promise<UserModel> {
+        return this.userModel.findById(id).exec()
+    }
+
+    async updateUser(id: String,userUpdated: UserModel){
+        return this.userModel.findByIdAndUpdate(id,userUpdated).exec()
+    }
+
+    async deleteById(id: String){
+        return this.userModel.findByIdAndRemove(id).exec()
+    }
+
 }
