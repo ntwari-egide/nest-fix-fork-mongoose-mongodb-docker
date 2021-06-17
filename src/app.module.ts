@@ -6,15 +6,8 @@ import { UsersModule } from './modules/users.module';
 
 @Module({
   imports: [
-    UsersModule,
-    MongooseModule.forRoot(
-      //Replace this line with the one Cluster > Connect > Connect your Application
-      'mongodb+srv://root:<password>@cluster0.ulkpq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-      {
-        connectionName: 'users'
-      }
-      ),
-  ],
+    UsersModule
+],
   controllers: [AppController],
   providers: [AppService],
 })
