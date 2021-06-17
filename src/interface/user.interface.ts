@@ -1,4 +1,6 @@
 export default interface UserModel extends Document{
+    id: String
+
     fullName: String
 
     secondName: String
