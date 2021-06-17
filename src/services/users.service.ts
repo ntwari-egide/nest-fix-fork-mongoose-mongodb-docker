@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import CreateUserDTO from 'src/dtos/createuser.dto';
@@ -24,7 +24,16 @@ export class UsersService {
     }
 
     async findByUserId(id: String) : Promise<UserModel> {
-        return this.userModel.findById(id).exec()
+        let user : any
+
+        try {
+            user  = this.userModel.findById(id).exec()
+        } catch (error) {
+            throw new NotFoundException("User not found with id: "+id)
+            
+        }
+
+        return user
     }
 
     async updateUser(id: String,userUpdated: UserModel){
@@ -36,6 +45,7 @@ export class UsersService {
     }
 
     async getSignedOnSameDate (date: Date): Promise<UserModel[]>{
+
         return this.userModel.find({signedUpAt: date}).exec()
     }
 }
