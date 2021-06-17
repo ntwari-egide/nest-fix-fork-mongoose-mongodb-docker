@@ -35,4 +35,7 @@ export class UsersService {
         return this.userModel.findByIdAndRemove(id).exec()
     }
 
+    async getSignedOnSameDate (date: Date): Promise<UserModel[]>{
+        return this.userModel.find({signedUpAt: date}).exec()
+    }
 }
