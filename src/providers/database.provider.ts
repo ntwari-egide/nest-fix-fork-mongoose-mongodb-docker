@@ -4,7 +4,7 @@ export const databaseProviders = [
   {
     provide: 'DATABASE_CONNECTION',
     useFactory: (): Promise<typeof mongoose> =>
-      mongoose.connect('mongodb+srv://root:edaedaeda@cluster0.ulkpq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
+      mongoose.connect('mongodb://localhost:27017',{
           useUnifiedTopology: true,
           useNewUrlParser: true,
           useFindAndModify: false
