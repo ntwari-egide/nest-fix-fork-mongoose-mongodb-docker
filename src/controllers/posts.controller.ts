@@ -49,5 +49,4 @@ export class PostsController {
 
         return await this.postService.getPostDetails(id)
     }
-
 }
