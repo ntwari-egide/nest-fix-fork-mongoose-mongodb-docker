@@ -13,6 +13,9 @@ export class PostTypeService {
     async addNewPostType(postTypeToCreate : CreatePostTypeDTO): Promise<PostTypeModel>{
 
 
+        console.log("current post type: ",postTypeToCreate);
+        
+
         const newPostType = new this.postTypeModel(postTypeToCreate)
 
         return newPostType.save()

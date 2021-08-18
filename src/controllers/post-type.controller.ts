@@ -1,6 +1,7 @@
 import { Post, Put } from '@nestjs/common';
 import { Get } from '@nestjs/common';
 import { Param } from '@nestjs/common';
+import { Body } from '@nestjs/common';
 import { Delete } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
 import CreatePostTypeDTO from 'src/dtos/create-post-type.dto';
@@ -13,7 +14,10 @@ export class PostTypeController {
     constructor(private readonly postTypeService: PostTypeService) {}
 
     @Post()
-    async createNewPostType(newPostType: CreatePostTypeDTO){
+    async createNewPostType(@Body() newPostType: CreatePostTypeDTO){
+        console.log("post: ",newPostType);
+        
+
         return await this.postTypeService.addNewPostType(newPostType);
     }
 
@@ -26,12 +30,12 @@ export class PostTypeController {
         return await this.postTypeService.findById(id)
     }
 
-    @Put("/id")
-    async update(@Param("id") id: String,postTypeUpdated: CreatePostTypeDTO):Promise<PostTypeModel>{
+    @Put("/:id")
+    async update(@Param("id") id: String,@Body() postTypeUpdated: CreatePostTypeDTO):Promise<PostTypeModel>{
         return await this.postTypeService.updateUser(id,postTypeUpdated);
     }
 
-    @Delete("/id")
+    @Delete("/:id")
     async delete(@Param("id") id:String): Promise<PostTypeModel>{
         return await this.postTypeService.deleteById(id)
     }

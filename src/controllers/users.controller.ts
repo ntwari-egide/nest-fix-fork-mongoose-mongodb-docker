@@ -4,7 +4,6 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import CreateUserDTO from 'src/dtos/createuser.dto';
 import UserModel from 'src/interface/user.interface';
 import { UsersService } from 'src/services/users.service';
-;
 
 @Controller('/api/v1/users')
 export class UsersController {
