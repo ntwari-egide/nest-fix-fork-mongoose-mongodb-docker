@@ -92,6 +92,8 @@ export class PostsService {
 
         newPostDetails.comments = comments
 
+        newPostDetails.numberOfComments = comments.length
+
         return newPostDetails
 
     }

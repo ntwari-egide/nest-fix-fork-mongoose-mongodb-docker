@@ -6,7 +6,12 @@ export class AllPostDetails{
     // post 
     post: any
     
+    // number of comments
+
+    numberOfComments: any
+
     // comments
+
     comments: any[]
         // comment likes
 
