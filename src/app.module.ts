@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './modules/users.module';
 import { PostsModule } from './modules/posts.module';
-import { PostsController } from './controllers/posts.controller';
 import { PostTypeModule } from './modules/post-type.module';
 
 @Module({
@@ -13,7 +12,7 @@ import { PostTypeModule } from './modules/post-type.module';
     PostsModule,
     PostTypeModule
 ],
-  controllers: [AppController, PostsController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

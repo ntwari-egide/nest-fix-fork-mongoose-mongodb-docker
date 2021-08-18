@@ -9,8 +9,7 @@ import { DatabaseModule } from './database.module';
   imports: [PostsModule,DatabaseModule],
   providers: [
     PostsService,
-    ...postProviders,
-    ...userProviders
+    ...postProviders
   ],
   controllers: [PostsController],
   
