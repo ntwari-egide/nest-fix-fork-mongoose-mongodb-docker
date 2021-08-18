@@ -2,6 +2,7 @@ import { Delete } from '@nestjs/common';
 import { Get, Param, Post, Put } from '@nestjs/common';
 import { Body, Controller } from '@nestjs/common';
 import CreatePostDTO from 'src/dtos/createpost.dto';
+import { AllPostDetails } from 'src/interface/get-all-post-details.dto';
 import { PostsService } from 'src/services/posts.service';
 import { PostModel } from 'src/utils/global-models.models';
 
@@ -41,6 +42,12 @@ export class PostsController {
 
         return await this.postService.delete(id);
 
+    }
+
+    @Get("/:id/details")
+    async getPostDetails(@Param("id") id: String): Promise<AllPostDetails>{
+
+        return await this.postService.getPostDetails(id)
     }
 
 }
