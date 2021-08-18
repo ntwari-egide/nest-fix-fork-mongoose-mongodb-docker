@@ -12,19 +12,6 @@ export class PostsService {
         @Inject("POST-TYPE" ) private readonly postModel: Model<PostModel>
     ){}
 
-    async getAllPosts(): Promise<PostModel[]> {
-        return this.postModel.find().exec()
-    }
-
-    async createPost(posttocreate: CreatePostDTO): Promise<UserModel[]> {
-
-        let commenters : UserModel[] 
-        
-        posttocreate.postComments.map(async (commenter) =>  {
-            commenters.push( await this.userModel.findById(commenter).exec())
-        })
-     
-        return commenters
-    }
+    
 
 }
