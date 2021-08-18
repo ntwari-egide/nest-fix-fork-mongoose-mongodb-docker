@@ -6,7 +6,6 @@ import { UsersModule } from './modules/users.module';
 import { PostsModule } from './modules/posts.module';
 import { PostTypeModule } from './modules/post-type.module';
 import { PostCommentModule } from './modules/post-comment.module';
-import { PostCommentService } from './post-comment/post-comment.service';
 
 @Module({
   imports: [
@@ -16,6 +15,6 @@ import { PostCommentService } from './post-comment/post-comment.service';
     PostCommentModule
 ],
   controllers: [AppController],
-  providers: [AppService, PostCommentService],
+  providers: [AppService],
 })
 export class AppModule {}
