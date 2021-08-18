@@ -14,9 +14,7 @@ export class PostTypeController {
     constructor(private readonly postTypeService: PostTypeService) {}
 
     @Post()
-    async createNewPostType(@Body() newPostType: CreatePostTypeDTO){
-        console.log("post: ",newPostType);
-        
+    async createNewPostType(@Body() newPostType: CreatePostTypeDTO){        
 
         return await this.postTypeService.addNewPostType(newPostType);
     }

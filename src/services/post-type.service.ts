@@ -11,9 +11,6 @@ export class PostTypeService {
     constructor(@Inject('POST-TYPE') private readonly postTypeModel: Model<PostTypeModel>){}
 
     async addNewPostType(postTypeToCreate : CreatePostTypeDTO): Promise<PostTypeModel>{
-
-
-        console.log("current post type: ",postTypeToCreate);
         
 
         const newPostType = new this.postTypeModel(postTypeToCreate)
