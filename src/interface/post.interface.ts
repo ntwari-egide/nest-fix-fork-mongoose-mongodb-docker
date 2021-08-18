@@ -2,8 +2,6 @@ import { User } from "src/models/user.model";
 
 export default interface PostModel extends Document{
 
-    id: String
-
     postedBy: String
     
     postedAt: Date
@@ -23,7 +21,5 @@ export default interface PostModel extends Document{
     updatedAt: Date
 
     coverPic: ""
-
-    postComments: [User]
 
 }

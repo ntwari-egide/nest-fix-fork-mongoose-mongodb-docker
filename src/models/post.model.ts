@@ -1,9 +1,9 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
-export type PostTypeDocument = PostType & Document;
+export type PostDocument = Post & Document;
 
 @Schema()
-export class PostType {    
+export class Post {    
     @Prop()
     postedBy: String
     
@@ -35,4 +35,4 @@ export class PostType {
     coverPic: ""
 }
 
-export const PostTypeSchema = SchemaFactory.createForClass(PostType);
+export const PostSchema = SchemaFactory.createForClass(Post);

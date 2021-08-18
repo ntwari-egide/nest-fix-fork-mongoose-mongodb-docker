@@ -9,23 +9,19 @@ import { PostModel } from 'src/utils/global-models.models';
 export class PostsService {
 
     constructor(
-        @Inject("POST" ) private readonly postModel: Model<PostModel>,
-        @Inject("USER") private readonly userModel: Model<UserModel>
+        @Inject("POST" ) private readonly postModel: Model<PostModel>
     ){}
 
     async getAllPosts(): Promise<PostModel[]> {
         return this.postModel.find().exec()
     }
 
-    async createPost(posttocreate: CreatePostDTO): Promise<UserModel[]> {
+    async createPost(posttocreate: CreatePostDTO): Promise<PostModel> {
 
-        let commenters : UserModel[] 
-        
-        posttocreate.postComments.map(async (commenter) =>  {
-            commenters.push( await this.userModel.findById(commenter).exec())
-        })
-     
-        return commenters
+        const newPost = new this.postModel(posttocreate)
+
+        return newPost.save()
+
     }
 
 }
