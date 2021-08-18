@@ -20,6 +20,6 @@ export default interface PostModel extends Document{
 
     updatedAt: Date
 
-    coverPic: ""
+    coverPic: String
 
 }

@@ -32,7 +32,7 @@ export class Post {
     updatedAt: Date
 
     @Prop()
-    coverPic: ""
+    coverPic: String
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);
