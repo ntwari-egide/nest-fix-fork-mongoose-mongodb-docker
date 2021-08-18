@@ -20,6 +20,4 @@ export default class CreatePostDTO {
 
     coverPic: ""
 
-    postComments: [String]
-
 }
