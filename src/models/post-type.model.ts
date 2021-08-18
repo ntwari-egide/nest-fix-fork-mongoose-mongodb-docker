@@ -1,37 +1,27 @@
-import { MongooseModule, Prop } from "@nestjs/mongoose"
-import { Number } from "mongoose"
-import { PostComment, PostCommentSchema } from "src/utils/global-models.models";
-import { User, UserSchema } from "./user.model";
-const mongoose = require("mongoose");
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
-export const PostTypeSchema = mongoose.Schema({
-    
-    postedAt: Date,
+export type PostTypeDocument = PostType & Document;
 
-    postTypeTitle: String,
-
-    postTypeDescription: String,
-
-    createdAt: Date,
-
-    updatedAt: Date,
-
-    coverPic: String
-
-})
-
-
-export class PostType{
+@Schema()
+export class PostType {    
+    @Prop()
     postedAt: Date
 
+    @Prop()
     postTypeTitle: String
 
+    @Prop()
     postTypeDescription: String
 
+    @Prop()
     createdAt: Date
 
+    @Prop()
     updatedAt: Date
 
+    @Prop()
     coverPic: String
-
 }
+
+export const PostTypeSchema = SchemaFactory.createForClass(PostType);

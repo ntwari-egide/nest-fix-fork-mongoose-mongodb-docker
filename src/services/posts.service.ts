@@ -9,8 +9,7 @@ import { PostModel } from 'src/utils/global-models.models';
 export class PostsService {
 
     constructor(
-        @Inject("POST" ) private readonly postModel: Model<PostModel>,
-        @Inject("USER") private readonly userModel: Model<UserModel>
+        @Inject("POST-TYPE" ) private readonly postModel: Model<PostModel>
     ){}
 
     async getAllPosts(): Promise<PostModel[]> {
