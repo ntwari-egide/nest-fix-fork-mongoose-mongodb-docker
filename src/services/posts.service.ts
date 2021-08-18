@@ -75,12 +75,19 @@ export class PostsService {
 
     async getPostDetails(id: String) : Promise<AllPostDetails>{
 
-        const post = this.postModel.findById(id).exec()
+        let post
+
+        try {
+            post  = await this.postModel.findById(id).exec()
+        } catch (error) {
+            throw new PostNotFoundException("Post not found with id: "+id)
+            
+        }
 
         const comments = await this.postCommentModel.find({post: id}).exec()
 
-        const newPostDetails = new AllPostDetails();
-        
+        const newPostDetails = new AllPostDetails();        
+
         newPostDetails.post = post
 
         newPostDetails.comments = comments
