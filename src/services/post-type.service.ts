@@ -1,60 +1,59 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import CreateUserDTO from 'src/dtos/createuser.dto';
+import CreatePostTypeDTO from 'src/dtos/create-post-type.dto';
 import { UserNotFoundException } from 'src/exceptions/UserNotFoundException';
+import PostTypeModel from 'src/interface/post-type.interface';
 import UserModel from 'src/interface/user.interface';
-import { User, UserDocument } from 'src/models/user.model';
 
 @Injectable()
 export class PostTypeService {
 
-    constructor(@Inject('POST-TYPE') private readonly userModel: Model<UserModel>){}
+    constructor(@Inject('POST-TYPE') private readonly postTypeModel: Model<PostTypeModel>){}
 
-    async signupUser(userToCreate : CreateUserDTO): Promise<UserModel>{
+    async addNewPostType(postTypeToCreate : CreatePostTypeDTO): Promise<PostTypeModel>{
 
 
-        const newUser = new this.userModel(userToCreate)
+        const newPostType = new this.postTypeModel(postTypeToCreate)
 
-        return newUser.save()
+        return newPostType.save()
 
     }
 
-    async findAll(): Promise<UserModel[]>{
-        return this.userModel.find().exec()
+    async findAll(): Promise<PostTypeModel[]>{
+        return this.postTypeModel.find().exec()
     }
 
-    async findByUserId(id: String) : Promise<UserModel> {
-        let user : any
+    async findByUserId(id: String) : Promise<PostTypeModel> {
+        let post_type : any
 
         try {
-            user  = this.userModel.findById(id).exec()
+            post_type  = this.postTypeModel.findById(id).exec()
         } catch (error) {
-            throw new NotFoundException("User not found with id: "+id)
+            throw new NotFoundException("Post type not found with id: "+id)
             
         }
 
-        return user
+        return post_type
     }
 
-    async updateUser(id: String,userUpdated: CreateUserDTO){
-        return this.userModel.findByIdAndUpdate(id,userUpdated).exec()
+    async updateUser(id: String,postTypeUpdated: CreatePostTypeDTO){
+        return this.postTypeModel.findByIdAndUpdate(id,postTypeUpdated).exec()
     }
 
     async deleteById(id: String){
-        return this.userModel.findByIdAndRemove(id).exec()
+        return this.postTypeModel.findByIdAndRemove(id).exec()
     }
 
     async getSignedOnSameDate (date: Date): Promise<UserModel[]>{
 
-        let users : any
+        let postTypes : any
 
         try {
-            users = this.userModel.find({signedUpAt: date}).exec()
+            postTypes = this.postTypeModel.find({signedUpAt: date}).exec()
         } catch (error) {
-            throw new UserNotFoundException("no use signed up on this date")
+            throw new UserNotFoundException("no post type added on this date: "+date)
         }
 
-        return users
+        return postTypes
     }
 }
