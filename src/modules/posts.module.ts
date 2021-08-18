@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { PostsController } from 'src/controllers/posts.controller';
+import { postCommentProviders } from 'src/providers/post-comment.provider';
 import { postProviders } from 'src/providers/post.provider';
 import { userProviders } from 'src/providers/user.provider';
 import { PostsService } from 'src/services/posts.service';
@@ -9,7 +10,8 @@ import { DatabaseModule } from './database.module';
   imports: [PostsModule,DatabaseModule],
   providers: [
     PostsService,
-    ...postProviders
+    ...postProviders,
+    ...postCommentProviders
   ],
   controllers: [PostsController],
   

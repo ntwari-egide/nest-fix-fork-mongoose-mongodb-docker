@@ -2,13 +2,16 @@ import { Inject, Injectable } from '@nestjs/common';
 import { Model} from 'mongoose';
 import CreatePostDTO from 'src/dtos/createpost.dto';
 import { PostNotFoundException } from 'src/exceptions/PostNotFoundException';
+import { AllPostDetails } from 'src/interface/get-all-post-details.dto';
+import { PostCommentModel } from 'src/interface/post-comment.interface';
 import { PostModel } from 'src/utils/global-models.models';
 
 @Injectable()
 export class PostsService {
 
     constructor(
-        @Inject("POST" ) private readonly postModel: Model<PostModel>
+        @Inject("POST" ) private readonly postModel: Model<PostModel>,
+        @Inject("POST-COMMENT" ) private readonly postCommentModel: Model<PostCommentModel>
     ){}
 
     async getAllPosts(): Promise<PostModel[]> {
@@ -67,6 +70,22 @@ export class PostsService {
 
 
         return this.postModel.findByIdAndRemove(id).exec()
+
+    }
+
+    async getPostDetails(id: String) : Promise<AllPostDetails>{
+
+        const post = this.postModel.findById(id).exec()
+
+        const comments = await this.postCommentModel.find({post: id}).exec()
+
+        const newPostDetails = new AllPostDetails();
+        
+        newPostDetails.post = post
+
+        newPostDetails.comments = comments
+
+        return newPostDetails
 
     }
 
