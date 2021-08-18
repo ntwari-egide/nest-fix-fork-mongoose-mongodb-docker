@@ -23,7 +23,7 @@ export class PostTypeService {
         return this.postTypeModel.find().exec()
     }
 
-    async findByUserId(id: String) : Promise<PostTypeModel> {
+    async findById(id: String) : Promise<PostTypeModel> {
         let post_type : any
 
         try {
