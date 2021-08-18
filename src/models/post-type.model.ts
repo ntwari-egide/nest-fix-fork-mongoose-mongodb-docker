@@ -6,9 +6,6 @@ export type PostTypeDocument = PostType & Document;
 @Schema()
 export class PostType {    
     @Prop()
-    postedAt: Date
-
-    @Prop()
     postTypeTitle: String
 
     @Prop()

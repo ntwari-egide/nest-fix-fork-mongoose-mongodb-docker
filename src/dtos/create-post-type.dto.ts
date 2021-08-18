@@ -1,7 +1,4 @@
 export default class CreatePostTypeDTO{
-    
-    postedAt: Date
-
     postTypeTitle: String
 
     postTypeDescription: String

@@ -1,7 +1,5 @@
 
 export default interface PostTypeModel extends Document{
-    postedAt: Date
-
     postTypeTitle: String
 
     postTypeDescription: String
