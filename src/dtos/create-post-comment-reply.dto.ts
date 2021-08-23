@@ -1,5 +1,5 @@
 export class CreatePostCommentReplyDTO{
-    
+
     commentedBy: String
 
     commentId: String
@@ -11,4 +11,5 @@ export class CreatePostCommentReplyDTO{
     comment: String
 
     numberOfLikes: Number
+
 }
